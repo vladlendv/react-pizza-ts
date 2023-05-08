@@ -1,4 +1,8 @@
+import { useState } from "react"
+
 const PizzaBlock = ({ props }) => {
+  const [amount, setAmount] = useState(0)
+
   return (
     <div className="pizza-block">
       <img className="pizza-block__image" src={props.imageUrl} alt="Pizza" />
@@ -17,7 +21,10 @@ const PizzaBlock = ({ props }) => {
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от {props.price} ₽</div>
-        <div className="button button--outline button--add">
+        <div
+          className="button button--outline button--add"
+          onClick={() => setAmount((prev) => prev + 1)}
+        >
           <svg
             width="12"
             height="12"
@@ -31,7 +38,7 @@ const PizzaBlock = ({ props }) => {
             />
           </svg>
           <span>Добавить</span>
-          <i>{props.rating}</i>
+          <i>{amount}</i>
         </div>
       </div>
     </div>
