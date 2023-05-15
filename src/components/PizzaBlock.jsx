@@ -1,29 +1,29 @@
 import { useState } from "react"
 
-const PizzaBlock = ({ props }) => {
+const PizzaBlock = ({title, types, sizes, price, imageUrl}) => {
   const [amount, setAmount] = useState(0)
 
   return (
     <div className="pizza-block">
-      <img className="pizza-block__image" src={props.imageUrl} alt="Pizza" />
-      <h4 className="pizza-block__title">{props.title}</h4>
+      <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+      <h4 className="pizza-block__title">{title}</h4>
       <div className="pizza-block__selector">
         <ul>
-          {props.types.map((type) => (
+          {types.map((type) => (
             <li key={type}>{type === 0 ? "Традиционное" : "Тонкое"}</li>
           ))}
         </ul>
         <ul>
-          {props.sizes.map((item) => (
+          {sizes.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
       </div>
       <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от {props.price} ₽</div>
-        <div
+        <div className="pizza-block__price">от {price} ₽</div>
+        <button
           className="button button--outline button--add"
-          onClick={() => setAmount((prev) => prev + 1)}
+          onClick={() => setAmount(amount + 1)}
         >
           <svg
             width="12"
@@ -39,7 +39,7 @@ const PizzaBlock = ({ props }) => {
           </svg>
           <span>Добавить</span>
           <i>{amount}</i>
-        </div>
+        </button>
       </div>
     </div>
   )
