@@ -1,12 +1,12 @@
 import HeaderCart from "./HeaderCart"
 import Logo from "./Logo"
 
-const Header = () => {
+const Header = ({orderQuantity}) => {
   return (
     <div className="header">
       <div className="container">
         <Logo />
-        <HeaderCart />
+        <HeaderCart orderQuantity={orderQuantity} />
       </div>
     </div>
   )

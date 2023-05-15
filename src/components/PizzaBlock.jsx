@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const PizzaBlock = ({ title, types, sizes, price, imageUrl }) => {
+const PizzaBlock = ({ title, types, sizes, price, imageUrl, setOrderQuantity }) => {
   const [amount, setAmount] = useState(0)
   const [activeType, setActiveType] = useState(0)
   const [activeSize, setActiveSize] = useState(40)
@@ -37,7 +37,10 @@ const PizzaBlock = ({ title, types, sizes, price, imageUrl }) => {
         <div className="pizza-block__price">от {price} ₽</div>
         <button
           className="button button--outline button--add"
-          onClick={() => setAmount(amount + 1)}
+          onClick={() => {
+            setAmount(amount + 1)
+            setOrderQuantity(prev => prev + 1)
+            }}
         >
           <svg
             width="12"

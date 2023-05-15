@@ -1,4 +1,4 @@
-const HeaderCart = () => {
+const HeaderCart = ({orderQuantity}) => {
   return (
     <div className="header__cart">
       <a href="/cart.html" className="button button--cart">
@@ -33,7 +33,7 @@ const HeaderCart = () => {
             strokeLinejoin="round"
           />
         </svg>
-        <span>3</span>
+        <span>{orderQuantity}</span>
       </a>
     </div>
   )
