@@ -1,11 +1,16 @@
 export const initialState = {
   categories: [
-    "Все",
-    "Мясные",
-    "Вегитарианские",
-    "Гриль",
-    "Острые",
-    "Закрытые",
+    {name: "Все", id: 0},
+    {name: "Мясные", id: 1},
+    {name: "Вегитарианские", id: 2},
+    {name: "Гриль", id: 3},
+    {name: "Острые", id: 4},
+    {name: "Закрытые", id: 5},
+  ],
+  sortParams: [
+    {name: 'популярности', id: 0},
+    {name: 'цене', id: 1},
+    {name: 'алфавиту', id: 2},
   ],
   pizzaList: [
     {
@@ -46,7 +51,7 @@ export const initialState = {
       imageUrl:
         "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/af553bf5-3887-4501-b88e-8f0f55229429.jpg",
       title: "Кисло-сладкий цыпленок",
-      types: [1],
+      types: [0, 1],
       sizes: [26, 30, 40],
       price: 275,
       category: 2,

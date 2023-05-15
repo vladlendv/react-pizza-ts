@@ -1,4 +1,4 @@
-import logo from "../img/pizza-logo.svg"
+import logo from "../assets/img/pizza-logo.svg"
 
 const Logo = () => {
   return (

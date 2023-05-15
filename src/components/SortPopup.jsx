@@ -1,10 +1,31 @@
-const SortPopup = () => {
+import { initialState } from "../state"
+
+const SortPopup = ({ activeSort, setActiveSort, visible, setVisible }) => {
+  const { sortParams } = initialState
+
+  function changeActive(name) {
+    setActiveSort(name)
+    setVisible(false)
+  }
+
   return (
-    <div className="sort__popup">
+    <div
+      className={
+        visible
+          ? "sort__popup sort__popup-visible"
+          : "sort__popup sort__popup-hidden"
+      }
+    >
       <ul>
-        <li className="active">популярности</li>
-        <li>цене</li>
-        <li>алфавиту</li>
+        {sortParams.map((sort) => (
+          <li
+            className={activeSort === sort.id ? "active" : null}
+            onClick={() => changeActive(sort.name)}
+            key={sort.id}
+          >
+            {sort.name}
+          </li>
+        ))}
       </ul>
     </div>
   )

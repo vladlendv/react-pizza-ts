@@ -1,7 +1,9 @@
 import { useState } from "react"
 
-const PizzaBlock = ({title, types, sizes, price, imageUrl}) => {
+const PizzaBlock = ({ title, types, sizes, price, imageUrl }) => {
   const [amount, setAmount] = useState(0)
+  const [activeType, setActiveType] = useState(0)
+  const [activeSize, setActiveSize] = useState(40)
 
   return (
     <div className="pizza-block">
@@ -10,12 +12,24 @@ const PizzaBlock = ({title, types, sizes, price, imageUrl}) => {
       <div className="pizza-block__selector">
         <ul>
           {types.map((type) => (
-            <li key={type}>{type === 0 ? "Традиционное" : "Тонкое"}</li>
+            <li
+              className={activeType === type ? "active" : null}
+              onClick={() => setActiveType(type)}
+              key={type}
+            >
+              {type === 0 ? "Традиционное" : "Тонкое"}
+            </li>
           ))}
         </ul>
         <ul>
-          {sizes.map((item) => (
-            <li key={item}>{item}</li>
+          {sizes.map((size) => (
+            <li
+              className={activeSize === size ? "active" : null}
+              onClick={() => setActiveSize(size)}
+              key={size}
+            >
+              {size}
+            </li>
           ))}
         </ul>
       </div>

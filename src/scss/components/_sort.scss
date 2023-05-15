@@ -2,6 +2,10 @@
 
 .sort {
   position: relative;
+  
+  img {
+    margin-right: 8px;
+  }
   &__label {
     display: flex;
     align-items: center;
@@ -31,7 +35,12 @@
     overflow: hidden;
     padding: 10px 0;
     width: 160px;
-
+    &-hidden {
+      display: none;
+    }
+    &-visible {
+      display: block;
+    }
     ul {
       overflow: hidden;
       li {
