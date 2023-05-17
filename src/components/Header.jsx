@@ -1,7 +1,7 @@
 import HeaderCart from "./HeaderCart"
 import Logo from "./Logo"
 
-const Header = ({orderQuantity}) => {
+const Header = ({ orderQuantity }) => {
   return (
     <div className="header">
       <div className="container">

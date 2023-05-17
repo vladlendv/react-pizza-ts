@@ -1,7 +1,7 @@
 import { useState } from "react"
 import SortPopup from "./SortPopup"
 import arrowTop from "../assets/img/arrow-top.svg"
-import arrowDown from "../assets/img/drop-down-arrow_icon-icons.com_72774.svg"
+import arrowDown from "../assets/img/drop-down-arrow.svg"
 
 const Sort = () => {
   const [activeSort, setActiveSort] = useState("популярности")

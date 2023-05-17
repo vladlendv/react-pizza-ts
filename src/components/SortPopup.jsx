@@ -10,11 +10,9 @@ const SortPopup = ({ activeSort, setActiveSort, visible, setVisible }) => {
 
   return (
     <div
-      className={
-        visible
-          ? "sort__popup sort__popup-visible"
-          : "sort__popup sort__popup-hidden"
-      }
+      className={`sort__popup ${
+        visible ? "sort__popup-visible" : "sort__popup-hidden"
+      }`}
     >
       <ul>
         {sortParams.map((sort) => (
