@@ -3,11 +3,18 @@ import Header from "./components/Header"
 import Sort from "./components/Sort"
 import PizzaBlock from "./components/PizzaBlock"
 import { initialState } from "./state"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const App = () => {
-  const { pizzaList, categories } = initialState
+  const { categories } = initialState
+  const [pizzaList, setPizzaList] = useState([])
   const [orderQuantity, setOrderQuantity] = useState(0)
+  
+  useEffect(() => {
+    fetch("https://64ba3cb25e0670a501d5d86e.mockapi.io/pizza")
+      .then(data => data.json())
+      .then(res => setPizzaList(res))
+  })
 
   return (
     <div className="wrapper">
