@@ -3,6 +3,12 @@
 .categories {
   ul {
     display: flex;
+    @media (max-width: 860px) {
+      width: calc(100vw - 30px);
+      padding-bottom: 20px;
+      overflow: auto;
+    }
+    
 
     li {
       background-color: #f9f9f9;

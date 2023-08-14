@@ -9,7 +9,7 @@ body {
 }
 
 .wrapper {
-  width: calc(100vw - 100px);
+  // width: calc(100vw - 100px);
   height: 100%;
   background-color: #fff;
   margin: 50px auto;
@@ -28,12 +28,30 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
+
+    @media (max-width: 1366px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 1040px) {
+      grid-template-columns: repeat(2, 1fr);
+      
+    }
+
+    @media (max-width: 666px) {
+      grid-template-columns: repeat(1, 1fr);
+      
+    }
   }
 
   &__top {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 1280px) {
+      flex-direction: column;
+    }
   }
 }
 

@@ -7,6 +7,7 @@ const CartPage = () => {
   return (
     <div className="container--cart">
       <div className="cart">
+      
         <div className="cart__top">
           <h2 className="content__title">
             <img src={basketImg} alt="basket" />
