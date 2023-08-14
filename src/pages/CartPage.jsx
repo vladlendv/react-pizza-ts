@@ -38,7 +38,7 @@ const CartPage = () => {
               to="/"
               className="button button--outline button--add go-back-btn"
             >
-              <img src={backBtn} alt="button" />
+              <img style={{paddingRight: 20}} src={backBtn} alt="button" />
               <span>Вернуться назад</span>
             </Link>
             <div className="button pay-btn">

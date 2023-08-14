@@ -3,7 +3,7 @@ import styles from './ErrorPageBlock.module.scss'
 const ErrorPageBlock = () => {
   return (
     <div>
-      <h1 className={styles.title}>Результатов не найдено</h1>
+      <h1 className={styles.title}>Страница не найдена</h1>
     </div>
   )
 }

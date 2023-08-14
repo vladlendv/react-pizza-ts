@@ -1,14 +1,17 @@
-import logo from "../assets/img/pizza-logo.svg"
+import { Link } from "react-router-dom"
+import logo from "../assets/img/pizza-svgrepo-com.svg"
 
 const Logo = () => {
   return (
-    <div className="header__logo">
-      <img width="38" src={logo} alt="Pizza logo" />
-      <div>
-        <h1>React Pizza</h1>
-        <p>самая вкусная пицца во вселенной</p>
+    <Link to="/">
+      <div className="header__logo">
+        <img width="38" src={logo} alt="Pizza logo" />
+        <div>
+          <h1>Two Pizza</h1>
+          <p>Одна по цене двух, успей заказать!</p>
+        </div>
       </div>
-    </div>
+    </Link>
   )
 }
 export default Logo
