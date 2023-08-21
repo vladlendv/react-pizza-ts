@@ -7,19 +7,31 @@ import Categories from "../components/Categories"
 
 const HomePage = ({ setOrderQuantity }) => {
   const { categories } = initialState
+  const [active, setActive] = useState(0)
   const [pizzaList, setPizzaList] = useState([])
+  const [activeSort, setActiveSort] = useState("популярности")
 
   useEffect(() => {
-    fetch("https://64ba3cb25e0670a501d5d86e.mockapi.io/pizza")
+    if (active > 0) {
+      fetch(`https://64ba3cb25e0670a501d5d86e.mockapi.io/pizza?sortBy=${activeSort}&category=${active}`)
       .then((data) => data.json())
       .then((res) => setPizzaList(res))
-  }, [])
+    } else {
+      fetch(`https://64ba3cb25e0670a501d5d86e.mockapi.io/pizza?sortBy=${activeSort}`)
+      .then((data) => data.json())
+      .then((res) => setPizzaList(res))
+    }
+  }, [active, activeSort])
 
   return (
     <div className="content">
       <div className="content__top">
-        <Categories categories={categories} />
-        <Sort />
+        <Categories
+          activeCategory={active}
+          setActiveCategory={setActive}
+          categories={categories}
+        />
+        <Sort activeSort={activeSort} setActiveSort={setActiveSort} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">

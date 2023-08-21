@@ -3,9 +3,9 @@ import SortPopup from "./SortPopup"
 import arrowTop from "../assets/img/arrow-top.svg"
 import arrowDown from "../assets/img/drop-down-arrow.svg"
 
-const Sort = () => {
-  const [activeSort, setActiveSort] = useState("популярности")
+const Sort = ({activeSort, setActiveSort}) => {
   const [visible, setVisible] = useState(false)
+  activeSort = activeSort === 'title' ? 'алфавиту' : activeSort === 'price' ? 'цене' : 'популярности'
 
   return (
     <div className="sort">

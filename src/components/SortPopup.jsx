@@ -18,10 +18,10 @@ const SortPopup = ({ activeSort, setActiveSort, visible, setVisible }) => {
         {sortParams.map((sort) => (
           <li
             className={activeSort === sort.id ? "active" : null}
-            onClick={() => changeActive(sort.name)}
+            onClick={() => changeActive(sort.type)}
             key={sort.id}
           >
-            {sort.name}
+            {sort.title}
           </li>
         ))}
       </ul>
