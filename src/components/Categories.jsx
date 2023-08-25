@@ -1,6 +1,11 @@
 // import { useState } from "react"
 
-const Categories = ({ categories, activeCategory, setActiveCategory }) => {
+import { useContext } from "react"
+import { SortContext } from "../pages/HomePage"
+
+const Categories = ({ categories }) => {
+  const { activeCategory, setActiveCategory } = useContext(SortContext)
+
   return (
     <div className="categories">
       <ul>

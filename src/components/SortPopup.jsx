@@ -1,6 +1,9 @@
+import { useContext } from "react"
 import { initialState } from "../state"
+import { SortContext } from "../pages/HomePage"
 
-const SortPopup = ({ activeSort, setActiveSort, visible, setVisible }) => {
+const SortPopup = ({ visible, setVisible }) => {
+  const { activeSort, setActiveSort } = useContext(SortContext)
   const { sortParams } = initialState
 
   function changeActive(name) {
