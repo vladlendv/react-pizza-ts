@@ -1,13 +1,11 @@
 import { useContext } from "react"
-import { initialState } from "../state"
 import { SortContext } from "../pages/HomePage"
 
 const SortPopup = ({ visible, setVisible }) => {
-  const { activeSort, setActiveSort } = useContext(SortContext)
-  const { sortParams } = initialState
+  const { activeSort, setActiveSort, sortParams } = useContext(SortContext)
 
-  function changeActive(name) {
-    setActiveSort(name)
+  function changeActive(sortType) {
+    setActiveSort(sortType)
     setVisible(false)
   }
 
@@ -20,8 +18,8 @@ const SortPopup = ({ visible, setVisible }) => {
       <ul>
         {sortParams.map((sort) => (
           <li
-            className={activeSort === sort.id ? "active" : null}
-            onClick={() => changeActive(sort.type)}
+            className={activeSort.id === sort.id ? "active" : null}
+            onClick={() => changeActive(sort)}
             key={sort.id}
           >
             {sort.title}

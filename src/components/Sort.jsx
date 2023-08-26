@@ -7,19 +7,13 @@ import { SortContext } from "../pages/HomePage"
 const Sort = () => {
   const [visible, setVisible] = useState(false)
   const { activeSort, setActiveSort } = useContext(SortContext)
-  let sortType =
-    activeSort === "title"
-      ? "алфавиту"
-      : activeSort === "price"
-      ? "цене"
-      : "популярности"
 
   return (
     <div className="sort">
       <div onClick={() => setVisible(!visible)} className="sort__label">
         <img src={visible ? arrowTop : arrowDown} alt="arrow" />
         <b>Сортировка по:</b>
-        <span>{sortType}</span>
+        <span>{activeSort.title}</span>
       </div>
       <SortPopup
         visible={visible}

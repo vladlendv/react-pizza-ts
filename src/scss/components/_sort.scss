@@ -40,10 +40,13 @@
     padding: 10px 0;
     width: 160px;
     &-hidden {
-      display: none;
+      visibility: hidden;
+      opacity: 0;
+      transition: all ease-in .1s;
     }
     &-visible {
-      display: block;
+      opacity: 1;
+      transition: all ease-out .2s;
     }
     ul {
       overflow: hidden;

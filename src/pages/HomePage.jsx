@@ -9,16 +9,16 @@ export const SortContext = createContext(null)
 
 const HomePage = ({ setOrderQuantity }) => {
   const API_URL = "https://64ba3cb25e0670a501d5d86e.mockapi.io/pizza"
-  const { categories } = initialState
-  const [activeCategory, setActiveCategory] = useState(0)
+  const { categories, sortParams } = initialState
   const [pizzaList, setPizzaList] = useState([])
-  const [activeSort, setActiveSort] = useState("популярности")
+  const [activeCategory, setActiveCategory] = useState(0)
+  const [activeSort, setActiveSort] = useState(sortParams[0])
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     setIsLoading(true)
     fetch(
-      `${API_URL}?sortBy=${activeSort}${
+      `${API_URL}?sortBy=${activeSort.type}${
         activeCategory > 0 ? "&category=" + activeCategory : ""
       }`
     )
@@ -36,6 +36,7 @@ const HomePage = ({ setOrderQuantity }) => {
           value={{
             activeCategory,
             activeSort,
+            sortParams,
             setActiveCategory,
             setActiveSort,
           }}
@@ -47,7 +48,7 @@ const HomePage = ({ setOrderQuantity }) => {
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
         {isLoading
-          ? [...new Array(6)].map((el, index) => <PizzaLoader key={index} />)
+          ? [...new Array(3)].map((el, index) => <PizzaLoader key={index} />)
           : pizzaList.map((item) => (
               <PizzaBlock
                 setOrderQuantity={setOrderQuantity}
