@@ -1,5 +1,3 @@
-// import { useState } from "react"
-
 import { useContext } from "react"
 import { SortContext } from "../pages/HomePage"
 

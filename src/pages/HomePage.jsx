@@ -2,31 +2,31 @@ import { initialState } from "../state"
 import { createContext, useEffect, useState } from "react"
 import PizzaLoader from "../components/PizzaLoader"
 import PizzaBlock from "../components/PizzaBlock"
-import Sort from "../components/Sort"
 import Categories from "../components/Categories"
+import Sort from "../components/Sort"
 
 export const SortContext = createContext(null)
 
 const HomePage = ({ setOrderQuantity }) => {
+  const API_URL = "https://64ba3cb25e0670a501d5d86e.mockapi.io/pizza"
   const { categories } = initialState
   const [activeCategory, setActiveCategory] = useState(0)
   const [pizzaList, setPizzaList] = useState([])
   const [activeSort, setActiveSort] = useState("популярности")
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    if (activeCategory > 0) {
-      fetch(
-        `https://64ba3cb25e0670a501d5d86e.mockapi.io/pizza?sortBy=${activeSort}&category=${activeCategory}`
-      )
-        .then((data) => data.json())
-        .then((res) => setPizzaList(res))
-    } else {
-      fetch(
-        `https://64ba3cb25e0670a501d5d86e.mockapi.io/pizza?sortBy=${activeSort}`
-      )
-        .then((data) => data.json())
-        .then((res) => setPizzaList(res))
-    }
+    setIsLoading(true)
+    fetch(
+      `${API_URL}?sortBy=${activeSort}${
+        activeCategory > 0 ? "&category=" + activeCategory : ""
+      }`
+    )
+      .then((data) => data.json())
+      .then((res) => {
+        setPizzaList(res)
+        setIsLoading(false)
+      })
   }, [activeCategory, activeSort])
 
   return (
@@ -46,7 +46,7 @@ const HomePage = ({ setOrderQuantity }) => {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
-        {!pizzaList.length
+        {isLoading
           ? [...new Array(6)].map((el, index) => <PizzaLoader key={index} />)
           : pizzaList.map((item) => (
               <PizzaBlock
