@@ -19,8 +19,12 @@ const HomePage = ({ setOrderQuantity }) => {
     setIsLoading(true)
     fetch(
       `${API_URL}?sortBy=${activeSort.type}${
-        activeCategory > 0 ? "&category=" + activeCategory : ""
-      }`
+        activeSort.desc === "asc"
+          ? "&order=asc"
+          : activeSort.desc === "desc"
+          ? "&order=desc"
+          : ""
+      }${activeCategory > 0 ? "&category=" + activeCategory : ""}`
     )
       .then((data) => data.json())
       .then((res) => {

@@ -8,8 +8,9 @@ export const initialState = {
     { name: "Закрытые", id: 5 },
   ],
   sortParams: [
-    { type: "rating", title: "популярности", id: 0 },
-    { type: "price", id: 1, title: "цене" },
-    { type: "title", id: 2, title: "алфавиту" },
+    { type: "rating", title: "По рейтингу", id: 0 },
+    { type: "price", desc: "desc", id: 1, title: "По убыванию цены" },
+    { type: "price", desc: "asc", id: 2, title: "По возрастанию цены" },
+    { type: "title", id: 3, title: "По названию" },
   ],
 }

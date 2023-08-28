@@ -12,7 +12,7 @@ const Sort = () => {
     <div className="sort">
       <div onClick={() => setVisible(!visible)} className="sort__label">
         <img src={visible ? arrowTop : arrowDown} alt="arrow" />
-        <b>Сортировка по:</b>
+        <b>Сортировка:</b>
         <span>{activeSort.title}</span>
       </div>
       <SortPopup
