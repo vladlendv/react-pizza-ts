@@ -6,7 +6,7 @@ const Search = ({ text, setText }) => {
         value={text}
         placeholder="Введите название"
       />
-      <span>{text}</span>
+      {text && <span onClick={() => setText("")}>X</span>}
     </>
   )
 }

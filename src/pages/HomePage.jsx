@@ -30,11 +30,10 @@ const HomePage = ({ setOrderQuantity }) => {
     )
       .then((data) => data.json())
       .then((res) => {
-        if (searchText) setPizzaList(res.filter((e) => e.title.toLowerCase().includes(searchText)))
-        else setPizzaList(res)
+        setPizzaList(res)
         setIsLoading(false)
       })
-  }, [activeCategory, activeSort, searchText])
+  }, [activeCategory, activeSort])
 
   return (
     <div className="content">
@@ -57,17 +56,19 @@ const HomePage = ({ setOrderQuantity }) => {
       <div className="content__items">
         {isLoading
           ? [...new Array(3)].map((el, index) => <PizzaLoader key={index} />)
-          : pizzaList.map((item) => (
-              <PizzaBlock
-                setOrderQuantity={setOrderQuantity}
-                key={item.id}
-                title={item.title}
-                types={item.types}
-                sizes={item.sizes}
-                price={item.price}
-                imageUrl={item.imageUrl}
-              />
-            ))}
+          : pizzaList
+              .filter((el) => el.title.toLowerCase().includes(searchText))
+              .map((item) => (
+                <PizzaBlock
+                  setOrderQuantity={setOrderQuantity}
+                  key={item.id}
+                  title={item.title}
+                  types={item.types}
+                  sizes={item.sizes}
+                  price={item.price}
+                  imageUrl={item.imageUrl}
+                />
+              ))}
       </div>
     </div>
   )
