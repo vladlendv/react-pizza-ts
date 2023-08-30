@@ -30,7 +30,7 @@ const HomePage = ({ setOrderQuantity }) => {
     )
       .then((data) => data.json())
       .then((res) => {
-        if (searchText) setPizzaList(res.filter((e) => e.title.includes(searchText)))
+        if (searchText) setPizzaList(res.filter((e) => e.title.toLowerCase().includes(searchText)))
         else setPizzaList(res)
         setIsLoading(false)
       })
