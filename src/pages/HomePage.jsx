@@ -4,6 +4,7 @@ import PizzaLoader from "../components/PizzaLoader"
 import PizzaBlock from "../components/PizzaBlock"
 import Categories from "../components/Categories"
 import Sort from "../components/Sort"
+import Search from "../components/Search/Search"
 
 export const SortContext = createContext(null)
 
@@ -14,6 +15,7 @@ const HomePage = ({ setOrderQuantity }) => {
   const [activeCategory, setActiveCategory] = useState(0)
   const [activeSort, setActiveSort] = useState(sortParams[0])
   const [isLoading, setIsLoading] = useState(false)
+  const [searchText, setSearchText] = useState("")
 
   useEffect(() => {
     setIsLoading(true)
@@ -28,13 +30,15 @@ const HomePage = ({ setOrderQuantity }) => {
     )
       .then((data) => data.json())
       .then((res) => {
-        setPizzaList(res)
+        if (searchText) setPizzaList(res.filter((e) => e.title.includes(searchText)))
+        else setPizzaList(res)
         setIsLoading(false)
       })
-  }, [activeCategory, activeSort])
+  }, [activeCategory, activeSort, searchText])
 
   return (
     <div className="content">
+      <Search text={searchText} setText={setSearchText} />
       <div className="content__top">
         <SortContext.Provider
           value={{
