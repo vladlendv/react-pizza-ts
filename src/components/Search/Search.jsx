@@ -1,12 +1,23 @@
-const Search = ({ text, setText }) => {
+import { useContext } from "react"
+import { SortContext } from "../../pages/HomePage"
+import styles from "./Search.module.scss"
+
+const Search = () => {
+  const { searchText, setSearchText } = useContext(SortContext)
+
   return (
     <>
       <input
-        onChange={(e) => setText(e.target.value.toLowerCase())}
-        value={text}
+        className={styles.input}
+        onChange={(e) => setSearchText(e.target.value)}
+        value={searchText}
         placeholder="Введите название"
       />
-      {text && <span onClick={() => setText("")}>X</span>}
+      {searchText && (
+        <span className={styles.removeBtn} onClick={() => setSearchText("")}>
+          X
+        </span>
+      )}
     </>
   )
 }

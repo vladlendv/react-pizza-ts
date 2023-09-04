@@ -16,7 +16,6 @@ const HomePage = ({ setOrderQuantity }) => {
   const [activeSort, setActiveSort] = useState(sortParams[0])
   const [isLoading, setIsLoading] = useState(false)
   const [searchText, setSearchText] = useState("")
-
   useEffect(() => {
     setIsLoading(true)
     fetch(
@@ -37,27 +36,34 @@ const HomePage = ({ setOrderQuantity }) => {
 
   return (
     <div className="content">
-      <Search text={searchText} setText={setSearchText} />
-      <div className="content__top">
-        <SortContext.Provider
-          value={{
-            activeCategory,
-            activeSort,
-            sortParams,
-            setActiveCategory,
-            setActiveSort,
-          }}
-        >
+      <SortContext.Provider
+        value={{
+          activeCategory,
+          activeSort,
+          sortParams,
+          searchText,
+          setSearchText,
+          setActiveCategory,
+          setActiveSort,
+        }}
+      >
+        <div className="content__top">
           <Categories categories={categories} />
           <Sort />
-        </SortContext.Provider>
-      </div>
-      <h2 className="content__title">Все пиццы</h2>
+        </div>
+        <div className="content__search">
+          <h2 className="content__search--title">Все пиццы</h2>
+          <Search />
+        </div>
+      </SortContext.Provider>
+
       <div className="content__items">
         {isLoading
           ? [...new Array(3)].map((el, index) => <PizzaLoader key={index} />)
           : pizzaList
-              .filter((el) => el.title.toLowerCase().includes(searchText))
+              .filter((el) =>
+                el.title.toLowerCase().includes(searchText.toLowerCase())
+              )
               .map((item) => (
                 <PizzaBlock
                   setOrderQuantity={setOrderQuantity}
