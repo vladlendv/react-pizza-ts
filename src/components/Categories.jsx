@@ -1,16 +1,20 @@
-import { useContext } from "react"
-import { SortContext } from "../pages/HomePage"
+// import { useContext } from "react"
+// import { SortContext } from "../pages/HomePage"
+import { useDispatch, useSelector } from "react-redux"
+import { setActive } from "../store/sliceCategories"
 
-const Categories = ({ categories }) => {
-  const { activeCategory, setActiveCategory } = useContext(SortContext)
+const Categories = () => {
+  // const { activeCategory, setActiveCategory } = useContext(SortContext)
+  const state = useSelector((state) => state.categories)
+  const dispatch = useDispatch()
 
   return (
     <div className="categories">
       <ul>
-        {categories.map((category) => (
+        {state.categories.map((category) => (
           <li
-            className={activeCategory === category.id ? "active" : null}
-            onClick={() => setActiveCategory(category.id)}
+            className={state.active === category.id ? "active" : null}
+            onClick={() => dispatch(setActive(category.id))}
             key={category.id}
           >
             {category.name}

@@ -1,5 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit"
+import categoriesReducer from "./sliceCategories"
 
-export const store = configureStore({
-  reducer: {}
+export default configureStore({
+  reducer: {
+    categories: categoriesReducer,
+  },
 })
