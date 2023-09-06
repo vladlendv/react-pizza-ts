@@ -12,7 +12,7 @@ export const SortContext = createContext(null)
 const HomePage = ({ setOrderQuantity }) => {
   const API_URL = "https://64ba3cb25e0670a501d5d86e.mockapi.io/pizza"
   const activeCategory = useSelector((state) => state.categories.active)
-  const { categories, sortParams } = initialState
+  const { sortParams } = initialState
   const [pizzaList, setPizzaList] = useState([])
   const [activeSort, setActiveSort] = useState(sortParams[0])
   const [isLoading, setIsLoading] = useState(false)
@@ -47,7 +47,7 @@ const HomePage = ({ setOrderQuantity }) => {
         }}
       >
         <div className="content__top">
-          <Categories categories={categories} />
+          <Categories />
           <Sort />
         </div>
         <div className="content__search">

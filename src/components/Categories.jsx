@@ -1,10 +1,7 @@
-// import { useContext } from "react"
-// import { SortContext } from "../pages/HomePage"
 import { useDispatch, useSelector } from "react-redux"
 import { setActive } from "../store/sliceCategories"
 
 const Categories = () => {
-  // const { activeCategory, setActiveCategory } = useContext(SortContext)
   const state = useSelector((state) => state.categories)
   const dispatch = useDispatch()
 
