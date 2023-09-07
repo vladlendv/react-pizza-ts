@@ -1,20 +1,18 @@
-import { initialState } from "../state"
 import { createContext, useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 import PizzaLoader from "../components/PizzaLoader"
 import PizzaBlock from "../components/PizzaBlock"
 import Categories from "../components/Categories"
 import Sort from "../components/Sort"
 import Search from "../components/Search/Search"
-import { useSelector } from "react-redux"
 
 export const SortContext = createContext(null)
 
 const HomePage = ({ setOrderQuantity }) => {
   const API_URL = "https://64ba3cb25e0670a501d5d86e.mockapi.io/pizza"
   const activeCategory = useSelector((state) => state.categories.active)
-  const { sortParams } = initialState
+  const activeSort = useSelector((state) => state.sort.activeSort)
   const [pizzaList, setPizzaList] = useState([])
-  const [activeSort, setActiveSort] = useState(sortParams[0])
   const [isLoading, setIsLoading] = useState(false)
   const [searchText, setSearchText] = useState("")
   useEffect(() => {
@@ -39,11 +37,8 @@ const HomePage = ({ setOrderQuantity }) => {
     <div className="content">
       <SortContext.Provider
         value={{
-          activeSort,
-          sortParams,
           searchText,
           setSearchText,
-          setActiveSort,
         }}
       >
         <div className="content__top">

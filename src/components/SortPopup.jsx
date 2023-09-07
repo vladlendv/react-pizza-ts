@@ -1,11 +1,12 @@
-import { useContext } from "react"
-import { SortContext } from "../pages/HomePage"
+import { useDispatch, useSelector } from "react-redux"
+import { setActiveSort } from "../store/sortSlice"
 
 const SortPopup = ({ visible, setVisible }) => {
-  const { activeSort, setActiveSort, sortParams } = useContext(SortContext)
+  const dispatch = useDispatch()
+  const { activeSort, sortParams } = useSelector((state) => state.sort)
 
   function changeActive(sortType) {
-    setActiveSort(sortType)
+    dispatch(setActiveSort(sortType))
     setVisible(false)
   }
 

@@ -1,12 +1,12 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import SortPopup from "./SortPopup"
 import arrowTop from "../assets/img/arrow-top.svg"
 import arrowDown from "../assets/img/drop-down-arrow.svg"
-import { SortContext } from "../pages/HomePage"
+import { useSelector } from "react-redux"
 
 const Sort = () => {
   const [visible, setVisible] = useState(false)
-  const { activeSort, setActiveSort } = useContext(SortContext)
+  const activeSort = useSelector((state) => state.sort.activeSort)
 
   return (
     <div className="sort">
@@ -15,12 +15,7 @@ const Sort = () => {
         <b>Сортировка:</b>
         <span>{activeSort.title}</span>
       </div>
-      <SortPopup
-        visible={visible}
-        activeSort={activeSort}
-        setActiveSort={setActiveSort}
-        setVisible={setVisible}
-      />
+      <SortPopup visible={visible} setVisible={setVisible} />
     </div>
   )
 }

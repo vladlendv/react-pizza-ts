@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"
-import categoriesReducer from "./sliceCategories"
+import categoriesReducer from "./categoriesSlice"
+import sortSlice from "./sortSlice"
 
 export default configureStore({
   reducer: {
     categories: categoriesReducer,
+    sort: sortSlice,
   },
 })
