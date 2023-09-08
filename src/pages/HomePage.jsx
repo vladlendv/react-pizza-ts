@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import PizzaLoader from "../components/PizzaLoader"
 import PizzaBlock from "../components/PizzaBlock"
@@ -6,15 +6,14 @@ import Categories from "../components/Categories"
 import Sort from "../components/Sort"
 import Search from "../components/Search/Search"
 
-export const SortContext = createContext(null)
-
 const HomePage = ({ setOrderQuantity }) => {
   const API_URL = "https://64ba3cb25e0670a501d5d86e.mockapi.io/pizza"
   const activeCategory = useSelector((state) => state.categories.active)
   const activeSort = useSelector((state) => state.sort.activeSort)
-  const [pizzaList, setPizzaList] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [pizzaList, setPizzaList] = useState([])
   const [searchText, setSearchText] = useState("")
+
   useEffect(() => {
     setIsLoading(true)
     fetch(
@@ -35,21 +34,14 @@ const HomePage = ({ setOrderQuantity }) => {
 
   return (
     <div className="content">
-      <SortContext.Provider
-        value={{
-          searchText,
-          setSearchText,
-        }}
-      >
-        <div className="content__top">
-          <Categories />
-          <Sort />
-        </div>
-        <div className="content__search">
-          <h2 className="content__search--title">Все пиццы</h2>
-          <Search />
-        </div>
-      </SortContext.Provider>
+      <div className="content__top">
+        <Categories />
+        <Sort />
+      </div>
+      <div className="content__search">
+        <h2 className="content__search--title">Все пиццы</h2>
+        <Search searchText={searchText} setSearchText={setSearchText} />
+      </div>
 
       <div className="content__items">
         {isLoading

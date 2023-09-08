@@ -1,10 +1,6 @@
-import { useContext } from "react"
-import { SortContext } from "../../pages/HomePage"
 import styles from "./Search.module.scss"
 
-const Search = () => {
-  const { searchText, setSearchText } = useContext(SortContext)
-
+const Search = ({ searchText, setSearchText }) => {
   return (
     <>
       <input
