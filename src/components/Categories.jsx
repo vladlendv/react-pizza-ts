@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { setActive } from "../store/categoriesSlice"
+import { setActive } from "../redux/categoriesSlice"
 
 const Categories = () => {
   const state = useSelector((state) => state.categories)

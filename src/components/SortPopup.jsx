@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { setActiveSort } from "../store/sortSlice"
+import { setActiveSort } from "../redux/sortSlice"
 
 const SortPopup = ({ visible, setVisible }) => {
   const dispatch = useDispatch()

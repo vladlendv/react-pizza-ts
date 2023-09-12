@@ -5,6 +5,7 @@ import PizzaBlock from "../components/PizzaBlock"
 import Categories from "../components/Categories"
 import Sort from "../components/Sort"
 import Search from "../components/Search/Search"
+import axios from "axios"
 
 const HomePage = ({ setOrderQuantity }) => {
   const API_URL = "https://64ba3cb25e0670a501d5d86e.mockapi.io/pizza"
@@ -16,18 +17,19 @@ const HomePage = ({ setOrderQuantity }) => {
 
   useEffect(() => {
     setIsLoading(true)
-    fetch(
-      `${API_URL}?sortBy=${activeSort.type}${
-        activeSort.desc === "asc"
-          ? "&order=asc"
-          : activeSort.desc === "desc"
-          ? "&order=desc"
-          : ""
-      }${activeCategory > 0 ? "&category=" + activeCategory : ""}`
-    )
-      .then((data) => data.json())
+    axios
+      .get(
+        `${API_URL}?sortBy=${activeSort.type}${
+          activeSort.desc === "asc"
+            ? "&order=asc"
+            : activeSort.desc === "desc"
+            ? "&order=desc"
+            : ""
+        }${activeCategory > 0 ? "&category=" + activeCategory : ""}`
+      )
       .then((res) => {
-        setPizzaList(res)
+        console.log(res.data)
+        setPizzaList(res.data)
         setIsLoading(false)
       })
   }, [activeCategory, activeSort])
