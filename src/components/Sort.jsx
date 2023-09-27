@@ -6,7 +6,7 @@ import { useSelector } from "react-redux"
 
 const Sort = () => {
   const [visible, setVisible] = useState(false)
-  const activeSort = useSelector((state) => state.sort.activeSort)
+  const activeSort = useSelector((state) => state.search.activeSort)
 
   return (
     <div className="sort">

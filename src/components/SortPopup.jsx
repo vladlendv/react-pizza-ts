@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
-import { setActiveSort } from "../redux/sortSlice"
+import { setActiveSort } from "../redux/searchSlice"
 
 const SortPopup = ({ visible, setVisible }) => {
   const dispatch = useDispatch()
-  const { activeSort, sortParams } = useSelector((state) => state.sort)
+  const { activeSort, sortParams } = useSelector((state) => state.search)
 
   function changeActive(sortType) {
     dispatch(setActiveSort(sortType))

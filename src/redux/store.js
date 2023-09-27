@@ -1,10 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit"
-import categoriesReducer from "./categoriesSlice"
-import sortReducer from "./sortSlice"
+import searchReducer from "./searchSlice"
 
 export default configureStore({
   reducer: {
-    categories: categoriesReducer,
-    sort: sortReducer,
+    search: searchReducer,
   },
 })
