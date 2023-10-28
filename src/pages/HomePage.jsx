@@ -1,35 +1,22 @@
 import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import PizzaLoader from "../components/PizzaLoader"
 import PizzaBlock from "../components/PizzaBlock"
 import Categories from "../components/Categories"
 import Sort from "../components/Sort"
 import Search from "../components/Search/Search"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
-import qs from 'qs'
-import { setSearchParams } from "../redux/searchSlice"
 
 const HomePage = ({ setOrderQuantity }) => {
   const API_URL = "https://64ba3cb25e0670a501d5d86e.mockapi.io/pizza"
   const activeCategory = useSelector((state) => state.search.active)
   const activeSort = useSelector((state) => state.search.activeSort)
-  const searchParams = useSelector((state) => state.search.searchParams)
   const [isLoading, setIsLoading] = useState(false)
   const [pizzaList, setPizzaList] = useState([])
   const [searchText, setSearchText] = useState("")
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+
 
   useEffect(() => {
-    if (window.location.search) {
-      const params = qs.parse(window.location.search.substring(1))
-      dispatch(setSearchParams(params))
-    }
-  }, [activeCategory, activeSort])
-
-  useEffect(() => {
-    console.log(searchParams)
     setIsLoading(true)
     axios
       .get(
@@ -45,14 +32,6 @@ const HomePage = ({ setOrderQuantity }) => {
         setPizzaList(res.data)
         setIsLoading(false)
       })
-  }, [activeCategory, activeSort])
-
-  useEffect(() => {
-    const queryString = qs.stringify({
-      sort: activeSort.type,
-      category: activeCategory,
-    })
-    navigate(`?${queryString}`)
   }, [activeCategory, activeSort])
 
   return (

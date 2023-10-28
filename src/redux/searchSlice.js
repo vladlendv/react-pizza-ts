@@ -31,7 +31,8 @@ export const searchSlice = createSlice({
       state.active = action.payload
     },
     setSearchParams: (state, action) => {
-      state.searchParams = action.payload
+      state.activeSort = action.payload.sort
+      state.active = Number(action.payload.category)
     }
   },
 })
