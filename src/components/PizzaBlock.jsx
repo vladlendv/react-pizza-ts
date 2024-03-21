@@ -3,6 +3,7 @@ import plusImg from "../assets/img/plus.svg"
 import { useDispatch, useSelector } from "react-redux"
 import { addItem } from "../redux/cartSlice"
 import { setCurrentPizzaCount } from "../redux/pizzaSlice"
+import uniqid from 'uniqid'
 
 const PizzaBlock = memo(({ title, types, sizes, price, imageUrl, id }) => {
   const dispatch = useDispatch()
@@ -59,7 +60,7 @@ const PizzaBlock = memo(({ title, types, sizes, price, imageUrl, id }) => {
                 size: activeSize,
                 price,
                 imageUrl,
-                id,
+                id: uniqid(),
               })
             )
           }}
