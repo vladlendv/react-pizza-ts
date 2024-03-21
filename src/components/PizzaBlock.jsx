@@ -10,9 +10,10 @@ const PizzaBlock = memo(({ title, types, sizes, price, imageUrl, id }) => {
   const currentPizzaCount = useSelector(
     (state) => state.pizza.currentPizzaCount
   )
-  const isCount = currentPizzaCount.findIndex((item) => item.id === id)
+  const isCount = currentPizzaCount.findIndex((item) => item.title === title)
   const [activeType, setActiveType] = useState(0)
   const [activeSize, setActiveSize] = useState(40)
+  let currentId = uniqid()
 
   return (
     <div className="pizza-block">
@@ -49,8 +50,9 @@ const PizzaBlock = memo(({ title, types, sizes, price, imageUrl, id }) => {
           onClick={() => {
             dispatch(
               setCurrentPizzaCount({
-                id,
+                id: currentId,
                 type: "increase",
+                title,
               })
             )
             dispatch(
@@ -60,7 +62,7 @@ const PizzaBlock = memo(({ title, types, sizes, price, imageUrl, id }) => {
                 size: activeSize,
                 price,
                 imageUrl,
-                id: uniqid(),
+                id: currentId,
               })
             )
           }}

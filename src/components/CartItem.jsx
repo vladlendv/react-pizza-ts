@@ -7,7 +7,7 @@ const CartItem = ({ item }) => {
 
   const removePizza = () => {
     dispatch(removeItem(item))
-    dispatch(removeCurrentPizzaCount(item.id))
+    dispatch(removeCurrentPizzaCount(item.title))
   }
 
   return (

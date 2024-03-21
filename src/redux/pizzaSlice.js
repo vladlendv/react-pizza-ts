@@ -10,10 +10,12 @@ export const pizzaSlice = createSlice({
   reducers: {
     setCurrentPizzaCount: (state, action) => {
       if (
-        !state.currentPizzaCount.find((item) => item.id === action.payload.id)
+        !state.currentPizzaCount.find((item) => item.title === action.payload.title)
       ) {
+        console.log('add new item counter')
         state.currentPizzaCount.push({
           id: action.payload.id,
+          title: action.payload.title,
           count: 0,
         })
       }
@@ -21,7 +23,7 @@ export const pizzaSlice = createSlice({
       switch (action.payload.type) {
         case "increase":
           state.currentPizzaCount.forEach((item) => {
-            if (item.id === action.payload.id) {
+            if (item.title === action.payload.title) {
               item.count++
             }
           })
@@ -37,9 +39,7 @@ export const pizzaSlice = createSlice({
       state.currentPizzaCount = []
     },
     removeCurrentPizzaCount: (state, action) => {
-      state.currentPizzaCount = state.currentPizzaCount.filter(
-        (item) => item.id !== action.payload
-      )
+      state.currentPizzaCount.forEach(item => item.title === action.payload ? item.count = item.count - 1 : item.count)
     },
   },
 })
