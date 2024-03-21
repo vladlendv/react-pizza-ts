@@ -33,9 +33,10 @@ export const searchSlice = createSlice({
     setSearchParams: (state, action) => {
       state.activeSort = action.payload.sort
       state.active = Number(action.payload.category)
-    }
+    },
   },
 })
 
-export const { setActiveSort, setActiveCategory, setSearchParams } = searchSlice.actions
+export const { setActiveSort, setActiveCategory, setSearchParams } =
+  searchSlice.actions
 export default searchSlice.reducer

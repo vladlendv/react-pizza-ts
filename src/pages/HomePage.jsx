@@ -15,7 +15,6 @@ const HomePage = ({ setOrderQuantity }) => {
   const [pizzaList, setPizzaList] = useState([])
   const [searchText, setSearchText] = useState("")
 
-
   useEffect(() => {
     setIsLoading(true)
     axios
@@ -56,6 +55,7 @@ const HomePage = ({ setOrderQuantity }) => {
                 <PizzaBlock
                   setOrderQuantity={setOrderQuantity}
                   key={item.id}
+                  id={item.id}
                   title={item.title}
                   types={item.types}
                   sizes={item.sizes}

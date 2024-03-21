@@ -82,6 +82,20 @@ body {
     align-items: center;
   }
 
+  &__items {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      font-size: 18px;
+    }
+
+    &-block {
+      display: flex;
+      align-items: center;
+    }
+  }
+
   .content__title {
     display: flex;
     align-items: center;

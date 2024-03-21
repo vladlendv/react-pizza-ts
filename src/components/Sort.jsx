@@ -10,9 +10,11 @@ const Sort = () => {
   const sortRef = useRef()
 
   useEffect(() => {
-    document.body.addEventListener('click', (e) => {
-      if (!e.composedPath().includes(sortRef.current)) setVisible(false)
-    })
+    const handleClick = (event) => {
+      if (!event.composedPath().includes(sortRef.current)) setVisible(false)
+    }
+    document.body.addEventListener("click", handleClick)
+    return () => document.body.removeEventListener("click", handleClick)
   }, [])
 
   return (
