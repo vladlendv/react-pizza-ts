@@ -12,7 +12,6 @@ export const pizzaSlice = createSlice({
       if (
         !state.currentPizzaCount.find((item) => item.title === action.payload.title)
       ) {
-        console.log('add new item counter')
         state.currentPizzaCount.push({
           id: action.payload.id,
           title: action.payload.title,

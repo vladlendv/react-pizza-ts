@@ -69,7 +69,7 @@ const PizzaBlock = memo(({ title, types, sizes, price, imageUrl, id }) => {
         >
           <img src={plusImg} alt="add pizza" />
           <span>Добавить</span>
-          <i>{isCount === -1 ? 0 : currentPizzaCount[isCount].count}</i>
+          {isCount ? '' : <i>{currentPizzaCount[isCount].count}</i>}
         </button>
       </div>
     </div>
