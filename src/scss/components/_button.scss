@@ -97,6 +97,7 @@
 
   &--add {
     img {
+      transition: filter 0.15s ease-in-out;
       margin-right: 2px;
     }
 

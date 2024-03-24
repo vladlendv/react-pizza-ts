@@ -2,18 +2,13 @@ import { memo, useState } from "react"
 import plusImg from "../assets/img/plus.svg"
 import { useDispatch, useSelector } from "react-redux"
 import { addItem } from "../redux/cartSlice"
-import { setCurrentPizzaCount } from "../redux/pizzaSlice"
-import uniqid from 'uniqid'
 
 const PizzaBlock = memo(({ title, types, sizes, price, imageUrl, id }) => {
   const dispatch = useDispatch()
-  const currentPizzaCount = useSelector(
-    (state) => state.pizza.currentPizzaCount
-  )
-  const isCount = currentPizzaCount.findIndex((item) => item.title === title)
+  const orderList = useSelector((state) => state.cart.orderList)
+  const isCount = orderList.findIndex((item) => item.title === title)
   const [activeType, setActiveType] = useState(0)
   const [activeSize, setActiveSize] = useState(40)
-  let currentId = uniqid()
 
   return (
     <div className="pizza-block">
@@ -49,27 +44,28 @@ const PizzaBlock = memo(({ title, types, sizes, price, imageUrl, id }) => {
           className="button button--outline button--add"
           onClick={() => {
             dispatch(
-              setCurrentPizzaCount({
-                id: currentId,
-                type: "increase",
-                title,
-              })
-            )
-            dispatch(
               addItem({
                 title,
                 type: activeType,
                 size: activeSize,
                 price,
                 imageUrl,
-                id: currentId,
+                id: id + activeSize + activeType + title,
               })
             )
           }}
         >
           <img src={plusImg} alt="add pizza" />
           <span>Добавить</span>
-          {isCount ? '' : <i>{currentPizzaCount[isCount].count}</i>}
+          {isCount === -1 ? (
+            ""
+          ) : (
+            <i>
+              {orderList
+                .filter((item) => item.title === title)
+                .reduce((acc, i) => acc + i.currentPizzaCount, 0)}
+            </i>
+          )}
         </button>
       </div>
     </div>

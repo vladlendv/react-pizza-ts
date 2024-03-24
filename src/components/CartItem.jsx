@@ -1,13 +1,11 @@
 import { useDispatch } from "react-redux"
 import { removeItem } from "../redux/cartSlice"
-import { removeCurrentPizzaCount } from "../redux/pizzaSlice"
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch()
 
   const removePizza = () => {
     dispatch(removeItem(item))
-    dispatch(removeCurrentPizzaCount(item.title))
   }
 
   return (
@@ -20,8 +18,10 @@ const CartItem = ({ item }) => {
         <p>{item.type === 0 ? "традиционное" : "тонкое"} тесто</p>
         <p>Размер: {item.size} см</p>
         <p>Цена: {item.price} ₽</p>
+        <p>Количество: {item.currentPizzaCount}</p>
       </div>
       <button onClick={() => removePizza()}>Удалить</button>
+      <button onClick={() => removePizza()}>Добавить</button>
     </div>
   )
 }

@@ -5,17 +5,15 @@ import clearBtn from "../assets/img/clear-btn.svg"
 import { clearItems } from "../redux/cartSlice"
 import { useDispatch, useSelector } from "react-redux"
 import CartItem from "../components/CartItem"
-import { clearCurrentPizzaCount } from "../redux/pizzaSlice"
 
 const CartPage = () => {
   const dispatch = useDispatch()
-  const { totalPrice, totalCount, orderList } = useSelector(
+  const { totalPrice, totalPizzaCount, orderList } = useSelector(
     (state) => state.cart
   )
 
   const clearCart = () => {
     dispatch(clearItems())
-    dispatch(clearCurrentPizzaCount())
   }
 
   return (
@@ -39,7 +37,7 @@ const CartPage = () => {
         <div className="cart__bottom">
           <div className="cart__bottom-details">
             <span>
-              Всего пицц: <b>{totalCount}</b>
+              Всего пицц: <b>{totalPizzaCount}</b>
             </span>
             <span>
               Сумма заказа: <b>{totalPrice} ₽</b>
