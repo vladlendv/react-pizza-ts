@@ -50,6 +50,17 @@ export const cartSlice = createSlice({
         0
       )
     },
+    removeByType(state, action) {
+      state.orderList = state.orderList.filter(item => item.id !== action.payload)
+      state.totalPizzaCount = state.orderList.reduce(
+        (acc, item) => acc + item.currentPizzaCount,
+        0
+      )
+      state.totalPrice = state.orderList.reduce(
+        (acc, item) => acc + (item.price * item.currentPizzaCount || 0),
+        0
+      )
+    },
     clearItems(state) {
       state.totalPizzaCount = 0
       state.totalPrice = 0
@@ -58,5 +69,5 @@ export const cartSlice = createSlice({
   },
 })
 
-export const { addItem, removeItem, clearItems } = cartSlice.actions
+export const { addItem, removeItem, clearItems, removeByType } = cartSlice.actions
 export default cartSlice.reducer
