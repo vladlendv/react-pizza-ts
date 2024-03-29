@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import PizzaLoader from "../components/PizzaLoader"
 import PizzaBlock from "../components/PizzaBlock"
@@ -9,11 +9,11 @@ import ErrorPage from "./ErrorPage"
 import { fetchPizza } from "../redux/pizzaSlice"
 
 const HomePage = ({ setOrderQuantity }) => {
-  const activeCategory = useSelector((state) => state.search.active)
-  const activeSort = useSelector((state) => state.search.activeSort)
+  const { activeCategory, activeSort, searchText } = useSelector(
+    (state) => state.search
+  )
   const { pizzaList, status } = useSelector((state) => state.pizza)
   const dispatch = useDispatch()
-  const [searchText, setSearchText] = useState("")
 
   useEffect(() => {
     dispatch(
@@ -32,7 +32,7 @@ const HomePage = ({ setOrderQuantity }) => {
       </div>
       <div className="content__search">
         <h2 className="content__search--title">Все пиццы</h2>
-        <Search searchText={searchText} setSearchText={setSearchText} />
+        <Search />
       </div>
 
       {status === "failed" ? (
