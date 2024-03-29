@@ -1,4 +1,4 @@
-import ErrorPageBlock from "../components/ErrorPageBlock"
+import ErrorPageBlock from "../components/ErrorPageBlock/ErrorPageBlock"
 
 const ErrorPage = () => {
   return (
