@@ -22,7 +22,8 @@ const HomePage = ({ setOrderQuantity }) => {
         activeCategory,
       })
     )
-  }, [activeCategory, activeSort, dispatch])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeCategory, dispatch])
 
   return (
     <div className="content">

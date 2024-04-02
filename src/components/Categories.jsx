@@ -2,19 +2,19 @@ import { useDispatch, useSelector } from "react-redux"
 import { setActiveCategory } from "../redux/searchSlice"
 
 const Categories = () => {
-  const state = useSelector((state) => state.search)
+  const { categories, activeCategory } = useSelector((state) => state.search)
   const dispatch = useDispatch()
 
   return (
     <div className="categories">
       <ul>
-        {state.categories.map((category) => (
+        {categories.map((item) => (
           <li
-            className={state.active === category.id ? "active" : null}
-            onClick={() => dispatch(setActiveCategory(category.id))}
-            key={category.id}
+            className={activeCategory === item.id ? "active" : null}
+            onClick={() => dispatch(setActiveCategory(item.id))}
+            key={item.id}
           >
-            {category.name}
+            {item.name}
           </li>
         ))}
       </ul>

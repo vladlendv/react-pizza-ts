@@ -16,7 +16,7 @@ const initialState = {
     { name: "Острые", id: 4 },
     { name: "Закрытые", id: 5 },
   ],
-  active: 0,
+  activeCategory: 0,
   searchParams: null,
   searchText: "",
 }
@@ -29,11 +29,11 @@ export const searchSlice = createSlice({
       state.activeSort = action.payload
     },
     setActiveCategory: (state, action) => {
-      state.active = action.payload
+      state.activeCategory = action.payload
     },
     setSearchParams: (state, action) => {
       state.activeSort = action.payload.sort
-      state.active = Number(action.payload.category)
+      state.activeCategory = Number(action.payload.category)
     },
     setSearchText: (state, action) => {
       state.searchText = action.payload
