@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import basketImg from "../assets/img/content-title.svg"
 import backBtn from "../assets/img/back-btn.svg"
 import { useSelector } from "react-redux"
-import CartItem from "../components/CartItem"
+import CartItem from "../components/CartItem/CartItem"
 import СlearCart from "../components/СlearCart"
 import EmptyCart from "../components/EmptyCart"
 
