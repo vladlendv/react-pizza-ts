@@ -8,7 +8,7 @@ import Search from "../components/Search/Search"
 import ErrorPage from "./ErrorPage"
 import { fetchPizza } from "../redux/pizzaSlice"
 
-const HomePage = ({ setOrderQuantity }) => {
+const HomePage = () => {
   const { activeCategory, activeSort, searchText } = useSelector(
     (state) => state.search
   )
@@ -22,7 +22,7 @@ const HomePage = ({ setOrderQuantity }) => {
         activeCategory,
       })
     )
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeCategory, dispatch])
 
   return (
@@ -48,7 +48,6 @@ const HomePage = ({ setOrderQuantity }) => {
                 )
                 .map((item) => (
                   <PizzaBlock
-                    setOrderQuantity={setOrderQuantity}
                     key={item.id}
                     id={item.id}
                     title={item.title}

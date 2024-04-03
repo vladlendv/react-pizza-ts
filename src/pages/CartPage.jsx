@@ -4,7 +4,7 @@ import backBtn from "../assets/img/back-btn.svg"
 import { useSelector } from "react-redux"
 import CartItem from "../components/CartItem/CartItem"
 import СlearCart from "../components/СlearCart"
-import EmptyCart from "../components/EmptyCart"
+import EmptyCart from "../components/EmptyCart/EmptyCart"
 
 const CartPage = () => {
   const { totalPrice, totalPizzaCount, orderList } = useSelector(

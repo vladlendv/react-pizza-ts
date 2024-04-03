@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
-import emptyCart from "../assets/img/empty-cart.png"
-import backBtn from "../assets/img/back-btn.svg"
+import emptyCart from "../../assets/img/empty-cart.png"
+import backBtn from "../../assets/img/back-btn.svg"
 
-const EmptyCart = () => {
+const EmptyCart: React.FC = () => {
   return (
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} className="cart__bottom-buttons">
         <h2>Ваша корзина пуста</h2>

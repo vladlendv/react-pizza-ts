@@ -2,9 +2,12 @@ import { memo } from "react"
 import cartImg from "../assets/img/cart.svg"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
+import { RootState } from "../redux/store"
 
-const HeaderCart = memo(() => {
-  const {totalPizzaCount, totalPrice} = useSelector(state => state.cart)
+const HeaderCart: React.FC = memo(() => {
+  const { totalPizzaCount, totalPrice } = useSelector(
+    (state: RootState) => state.cart
+  )
 
   return (
     <div className="header__cart">
