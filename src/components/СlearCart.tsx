@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux"
 import { clearItems } from "../redux/cartSlice"
 import clearBtn from "../assets/img/clear-btn.svg"
 
-const СlearCart = () => {
+const СlearCart: React.FC = () => {
   const dispatch = useDispatch()
 
   const clearCart = () => {
