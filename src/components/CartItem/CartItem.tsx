@@ -8,13 +8,13 @@ import { AppDispatch } from "../../redux/store"
 
 interface IProps {
   item: {
-    title: string;
-    type: number;
-    size: number;
-    price: number;
-    imageUrl: string;
-    id: string | number;
-    currentPizzaCount?: any;
+    title: string
+    type: number
+    size: number
+    price: number
+    imageUrl: string
+    id: string | number
+    currentPizzaCount?: any
   }
 }
 

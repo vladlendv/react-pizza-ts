@@ -2,7 +2,16 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
 interface IPizzaState {
-  pizzaList: []
+  pizzaList: {
+    imageUrl: string
+    title: string
+    types: number[]
+    sizes: number[]
+    price: number
+    category: number
+    rating: number
+    id: any
+  }[]
   status: string
   errorMessage: string
 }

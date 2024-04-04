@@ -1,6 +1,6 @@
 import ErrorPageBlock from "../components/ErrorPageBlock/ErrorPageBlock"
 
-const ErrorPage = () => {
+const ErrorPage: React.FC = () => {
   return <ErrorPageBlock />
 }
 export default ErrorPage

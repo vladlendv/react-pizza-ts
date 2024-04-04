@@ -7,13 +7,14 @@ import Sort from "../components/Sort"
 import Search from "../components/Search/Search"
 import ErrorPage from "./ErrorPage"
 import { fetchPizza } from "../redux/pizzaSlice"
+import { AppDispatch, RootState } from "../redux/store"
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   const { activeCategory, activeSort, searchText } = useSelector(
-    (state) => state.search
+    (state: RootState) => state.search
   )
-  const { pizzaList, status } = useSelector((state) => state.pizza)
-  const dispatch = useDispatch()
+  const { pizzaList, status } = useSelector((state: RootState) => state.pizza)
+  const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
     dispatch(
@@ -43,8 +44,8 @@ const HomePage = () => {
           {status === "loading"
             ? [...new Array(3)].map((el, index) => <PizzaLoader key={index} />)
             : pizzaList
-                .filter((el) =>
-                  el.title.toLowerCase().includes(searchText.toLowerCase())
+                .filter((item) =>
+                  item.title.toLowerCase().includes(searchText.toLowerCase())
                 )
                 .map((item) => (
                   <PizzaBlock
