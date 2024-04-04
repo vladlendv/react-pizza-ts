@@ -4,9 +4,22 @@ import minus from "../../assets/img/minus.svg"
 import plus from "../../assets/img/plus.svg"
 import remove from "../../assets/img/remove.svg"
 import styles from "./CartIem.module.scss"
+import { AppDispatch } from "../../redux/store"
 
-const CartItem = ({ item }) => {
-  const dispatch = useDispatch()
+interface IProps {
+  item: {
+    title: string;
+    type: number;
+    size: number;
+    price: number;
+    imageUrl: string;
+    id: string | number;
+    currentPizzaCount?: any;
+  }
+}
+
+const CartItem: React.FC<IProps> = ({ item }) => {
+  const dispatch = useDispatch<AppDispatch>()
 
   const removePizza = () => {
     dispatch(removeItem(item))

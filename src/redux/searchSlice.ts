@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-interface ISearchState {
+export interface ISearchState {
   sortParams: {
     type: string
     title: string

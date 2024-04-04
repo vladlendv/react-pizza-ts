@@ -5,10 +5,11 @@ import { useSelector } from "react-redux"
 import CartItem from "../components/CartItem/CartItem"
 import СlearCart from "../components/СlearCart"
 import EmptyCart from "../components/EmptyCart/EmptyCart"
+import { RootState } from "../redux/store"
 
-const CartPage = () => {
+const CartPage: React.FC = () => {
   const { totalPrice, totalPizzaCount, orderList } = useSelector(
-    (state) => state.cart
+    (state: RootState) => state.cart
   )
 
   return (

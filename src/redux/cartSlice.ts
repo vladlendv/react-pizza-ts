@@ -5,7 +5,7 @@ interface ICartState {
   totalPizzaCount: number
   orderList: {
     title: string
-    type: string
+    type: number
     size: number
     price: number
     imageUrl: string

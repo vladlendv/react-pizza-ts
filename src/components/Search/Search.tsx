@@ -1,12 +1,13 @@
-import { useContext, useRef } from "react"
+import { useRef } from "react"
 import styles from "./Search.module.scss"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { removeSearchText, setSearchText } from "../../redux/searchSlice"
+import { AppDispatch, RootState } from "../../redux/store"
 
-const Search = () => {
-  const dispatch = useDispatch()
-  const searchText = useContext((state) => state.search.searchText)
-  let inputRef = useRef()
+const Search: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>()
+  const { searchText } = useSelector((state: RootState) => state.search)
+  let inputRef = useRef<HTMLInputElement>(null)
 
   return (
     <>
@@ -22,7 +23,9 @@ const Search = () => {
           className={styles.removeBtn}
           onClick={() => {
             dispatch(removeSearchText())
-            inputRef.current.focus()
+            if (inputRef.current) {
+              inputRef.current.focus()
+            }
           }}
         >
           X
