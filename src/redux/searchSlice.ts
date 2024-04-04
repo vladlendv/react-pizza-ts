@@ -1,6 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const initialState = {
+interface ISearchState {
+  sortParams: {
+    type: string
+    title: string
+    id: number
+    desc?: string
+  }[]
+  activeSort: {
+    type: string
+    title: string
+    id: number
+  }
+  categories: {
+    name: string
+    id: number
+  }[]
+  activeCategory: number
+  searchParams: string | null
+  searchText: string
+}
+
+const initialState: ISearchState = {
   sortParams: [
     { type: "rating", title: "По рейтингу", id: 0 },
     { type: "price", desc: "desc", id: 1, title: "По убыванию цены" },

@@ -1,6 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const initialState = {
+interface ICartState {
+  totalPrice: number
+  totalPizzaCount: number
+  orderList: {
+    title: string
+    type: string
+    size: number
+    price: number
+    imageUrl: string
+    id: number | string
+    currentPizzaCount?: any
+  }[]
+}
+
+const initialState: ICartState = {
   totalPrice: 0,
   totalPizzaCount: 0,
   orderList: [],
@@ -15,7 +29,7 @@ export const cartSlice = createSlice({
         state.orderList.push({ ...action.payload, currentPizzaCount: 1 })
       } else {
         state.orderList.forEach((item) => {
-          if (item.id === action.payload.id) {
+          if (item.currentPizzaCount && item.id === action.payload.id) {
             item.currentPizzaCount += 1
           }
         })
@@ -32,13 +46,13 @@ export const cartSlice = createSlice({
     },
     removeItem(state, action) {
       state.orderList.forEach((item) => {
-        if (item.id === action.payload.id) {
+        if (item.currentPizzaCount && item.id === action.payload.id) {
           if (item.currentPizzaCount > 0) item.currentPizzaCount -= 1
         }
       })
 
       state.orderList = state.orderList.filter(
-        (item) => item.currentPizzaCount > 0
+        (item) => item.currentPizzaCount && item.currentPizzaCount > 0
       )
 
       state.totalPizzaCount = state.orderList.reduce(

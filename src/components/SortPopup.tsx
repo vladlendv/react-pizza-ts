@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { setActiveSort } from "../redux/searchSlice"
-import { RootState } from "../redux/store"
+import { AppDispatch, RootState } from "../redux/store"
 
 type Props = {
   visible: boolean
@@ -14,7 +14,7 @@ interface ISort {
 }
 
 const SortPopup: React.FC<Props> = ({ visible, setVisible }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
   const { activeSort, sortParams } = useSelector(
     (state: RootState) => state.search
   )
