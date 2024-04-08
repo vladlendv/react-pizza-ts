@@ -1,12 +1,11 @@
 import { useRef } from "react"
 import styles from "./Search.module.scss"
-import { useDispatch, useSelector } from "react-redux"
 import { removeSearchText, setSearchText } from "../../redux/searchSlice"
-import { AppDispatch, RootState } from "../../redux/store"
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks"
 
 const Search: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>()
-  const { searchText } = useSelector((state: RootState) => state.search)
+  const dispatch = useAppDispatch()
+  const { searchText } = useAppSelector((state) => state.search)
   let inputRef = useRef<HTMLInputElement>(null)
 
   return (

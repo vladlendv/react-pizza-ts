@@ -3,7 +3,7 @@ import HeaderCart from "./HeaderCart"
 import Logo from "./Logo"
 
 const Header: React.FC = () => {
-  const {pathname} = useLocation()
+  const { pathname } = useLocation()
 
   return (
     <div className="header">

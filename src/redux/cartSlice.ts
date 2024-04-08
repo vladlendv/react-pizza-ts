@@ -1,20 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-interface ICartState {
-  totalPrice: number
-  totalPizzaCount: number
-  orderList: {
-    title: string
-    type: number
-    size: number
-    price: number
-    imageUrl: string
-    id: number | string
-    currentPizzaCount?: any
-  }[]
+export type Item = {
+  title: string
+  type: number
+  size: number
+  price: number
+  imageUrl: string
+  id: number | string
+  currentPizzaCount?: any
 }
 
-const initialState: ICartState = {
+type CartState = {
+  totalPrice: number
+  totalPizzaCount: number
+  orderList: Item[]
+}
+
+const initialState: CartState = {
   totalPrice: 0,
   totalPizzaCount: 0,
   orderList: [],

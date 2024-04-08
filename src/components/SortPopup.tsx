@@ -1,25 +1,17 @@
-import { useDispatch, useSelector } from "react-redux"
 import { setActiveSort } from "../redux/searchSlice"
-import { AppDispatch, RootState } from "../redux/store"
+import { Sort } from "../redux/pizzaSlice"
+import { useAppDispatch, useAppSelector } from "../hooks/hooks"
 
 type Props = {
   visible: boolean
   setVisible: (arg: false) => void
 }
 
-interface ISort {
-  type: string
-  title: string
-  id: number
-}
-
 const SortPopup: React.FC<Props> = ({ visible, setVisible }) => {
-  const dispatch = useDispatch<AppDispatch>()
-  const { activeSort, sortParams } = useSelector(
-    (state: RootState) => state.search
-  )
+  const dispatch = useAppDispatch()
+  const { activeSort, sortParams } = useAppSelector((state) => state.search)
 
-  function changeActive(sortType: ISort) {
+  function changeActive(sortType: Sort) {
     dispatch(setActiveSort(sortType))
     setVisible(false)
   }

@@ -1,25 +1,16 @@
-import { useDispatch } from "react-redux"
-import { addItem, removeByType, removeItem } from "../../redux/cartSlice"
+import { Item, addItem, removeByType, removeItem } from "../../redux/cartSlice"
 import minus from "../../assets/img/minus.svg"
 import plus from "../../assets/img/plus.svg"
 import remove from "../../assets/img/remove.svg"
 import styles from "./CartIem.module.scss"
-import { AppDispatch } from "../../redux/store"
+import { useAppDispatch } from "../../hooks/hooks"
 
-interface IProps {
-  item: {
-    title: string
-    type: number
-    size: number
-    price: number
-    imageUrl: string
-    id: string | number
-    currentPizzaCount?: any
-  }
+type Props = {
+  item: Item
 }
 
-const CartItem: React.FC<IProps> = ({ item }) => {
-  const dispatch = useDispatch<AppDispatch>()
+const CartItem: React.FC<Props> = ({ item }) => {
+  const dispatch = useAppDispatch()
 
   const removePizza = () => {
     dispatch(removeItem(item))

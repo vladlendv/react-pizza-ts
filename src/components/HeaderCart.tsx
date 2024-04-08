@@ -1,13 +1,10 @@
 import { memo } from "react"
 import cartImg from "../assets/img/cart.svg"
 import { Link } from "react-router-dom"
-import { useSelector } from "react-redux"
-import { RootState } from "../redux/store"
+import { useAppSelector } from "../hooks/hooks"
 
 const HeaderCart: React.FC = memo(() => {
-  const { totalPizzaCount, totalPrice } = useSelector(
-    (state: RootState) => state.cart
-  )
+  const { totalPizzaCount, totalPrice } = useAppSelector((state) => state.cart)
 
   return (
     <div className="header__cart">

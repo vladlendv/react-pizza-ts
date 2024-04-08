@@ -1,10 +1,9 @@
-import { useSelector } from "react-redux"
 import styles from "./ErrorPageBlock.module.scss"
 import errorImg from "../../assets/img/error-page.png"
-import { RootState } from "../../redux/store"
+import { useAppSelector } from "../../hooks/hooks"
 
 const ErrorPageBlock: React.FC = () => {
-  const { errorMessage } = useSelector((state: RootState) => state.pizza)
+  const { errorMessage } = useAppSelector((state) => state.pizza)
 
   return (
     <div className={styles.title}>

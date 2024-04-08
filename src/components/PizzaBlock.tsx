@@ -1,10 +1,9 @@
 import { memo, useState } from "react"
 import plusImg from "../assets/img/plus.svg"
-import { useDispatch, useSelector } from "react-redux"
 import { addItem } from "../redux/cartSlice"
-import { RootState } from "../redux/store"
+import { useAppDispatch, useAppSelector } from "../hooks/hooks"
 
-interface IProps {
+type Props = {
   id: any
   title: string
   types: number[]
@@ -13,10 +12,10 @@ interface IProps {
   imageUrl: string
 }
 
-const PizzaBlock: React.FC<IProps> = memo(
+const PizzaBlock: React.FC<Props> = memo(
   ({ title, types, sizes, price, imageUrl, id }) => {
-    const dispatch = useDispatch()
-    const orderList = useSelector((state: RootState) => state.cart.orderList)
+    const dispatch = useAppDispatch()
+    const orderList = useAppSelector((state) => state.cart.orderList)
     const isCount = orderList.findIndex((item) => item.title === title)
     const [activeType, setActiveType] = useState(0)
     const [activeSize, setActiveSize] = useState(40)

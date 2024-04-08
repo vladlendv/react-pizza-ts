@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
 import PizzaLoader from "../components/PizzaLoader"
 import PizzaBlock from "../components/PizzaBlock"
 import Categories from "../components/Categories"
@@ -7,14 +6,14 @@ import Sort from "../components/Sort"
 import Search from "../components/Search/Search"
 import ErrorPage from "./ErrorPage"
 import { fetchPizza } from "../redux/pizzaSlice"
-import { AppDispatch, RootState } from "../redux/store"
+import { useAppDispatch, useAppSelector } from "../hooks/hooks"
 
 const HomePage: React.FC = () => {
-  const { activeCategory, activeSort, searchText } = useSelector(
-    (state: RootState) => state.search
+  const { activeCategory, activeSort, searchText } = useAppSelector(
+    (state) => state.search
   )
-  const { pizzaList, status } = useSelector((state: RootState) => state.pizza)
-  const dispatch = useDispatch<AppDispatch>()
+  const { pizzaList, status } = useAppSelector((state) => state.pizza)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(

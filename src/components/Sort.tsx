@@ -2,12 +2,11 @@ import { useEffect, useRef, useState } from "react"
 import SortPopup from "./SortPopup"
 import arrowTop from "../assets/img/arrow-top.svg"
 import arrowDown from "../assets/img/drop-down-arrow.svg"
-import { useSelector } from "react-redux"
-import { RootState } from "../redux/store"
+import { useAppSelector } from "../hooks/hooks"
 
 const Sort: React.FC = () => {
   const [visible, setVisible] = useState<boolean>(false)
-  const activeSort = useSelector((state: RootState) => state.search.activeSort)
+  const activeSort = useAppSelector((state) => state.search.activeSort)
   const sortRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

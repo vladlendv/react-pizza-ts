@@ -1,17 +1,16 @@
-import { useDispatch, useSelector } from "react-redux"
 import { setActiveCategory } from "../redux/searchSlice"
-import { AppDispatch, RootState } from "../redux/store"
+import { useAppDispatch, useAppSelector } from "../hooks/hooks"
 
 const Categories: React.FC = () => {
-  const { categories, activeCategory } = useSelector((state: RootState) => state.search)
-  const dispatch = useDispatch<AppDispatch>()
+  const { categories, activeCategory } = useAppSelector((state) => state.search)
+  const dispatch = useAppDispatch()
 
   return (
     <div className="categories">
       <ul>
         {categories.map((item) => (
           <li
-            className={activeCategory === item.id ? "active" : ''}
+            className={activeCategory === item.id ? "active" : ""}
             onClick={() => dispatch(setActiveCategory(item.id))}
             key={item.id}
           >
