@@ -1,4 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+
+export type Id = number | string
 
 export type Item = {
   title: string
@@ -6,7 +8,7 @@ export type Item = {
   size: number
   price: number
   imageUrl: string
-  id: number | string
+  id: Id
   currentPizzaCount?: any
 }
 
@@ -26,7 +28,7 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addItem(state, action) {
+    addItem(state, action: PayloadAction<Item>) {
       if (!state.orderList.find((item) => item.id === action.payload.id)) {
         state.orderList.push({ ...action.payload, currentPizzaCount: 1 })
       } else {
@@ -46,7 +48,7 @@ export const cartSlice = createSlice({
         0
       )
     },
-    removeItem(state, action) {
+    removeItem(state, action: PayloadAction<Item>) {
       state.orderList.forEach((item) => {
         if (item.currentPizzaCount && item.id === action.payload.id) {
           if (item.currentPizzaCount > 0) item.currentPizzaCount -= 1
@@ -66,7 +68,7 @@ export const cartSlice = createSlice({
         0
       )
     },
-    removeByType(state, action) {
+    removeByType(state, action: PayloadAction<Id>) {
       state.orderList = state.orderList.filter(
         (item) => item.id !== action.payload
       )
