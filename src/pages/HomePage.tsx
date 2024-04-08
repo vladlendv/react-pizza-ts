@@ -22,8 +22,7 @@ const HomePage: React.FC = () => {
         activeCategory,
       })
     )
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeCategory, dispatch])
+  }, [activeCategory, activeSort, dispatch])
 
   return (
     <div className="content">

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
 type List = {
@@ -58,7 +58,7 @@ export const pizzaSlice = createSlice({
   name: "pizza",
   initialState,
   reducers: {
-    setItems(state, action) {
+    setItems(state, action: PayloadAction<List[]>) {
       state.pizzaList = action.payload
     },
   },

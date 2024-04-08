@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 type SearchParams = {
   type: string
@@ -52,17 +52,13 @@ export const searchSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
-    setActiveSort: (state, action) => {
+    setActiveSort: (state, action: PayloadAction<ActiveSortObj>) => {
       state.activeSort = action.payload
     },
-    setActiveCategory: (state, action) => {
+    setActiveCategory: (state, action: PayloadAction<number>) => {
       state.activeCategory = action.payload
     },
-    setSearchParams: (state, action) => {
-      state.activeSort = action.payload.sort
-      state.activeCategory = Number(action.payload.category)
-    },
-    setSearchText: (state, action) => {
+    setSearchText: (state, action: PayloadAction<string>) => {
       state.searchText = action.payload
     },
     removeSearchText: (state) => {
@@ -74,7 +70,6 @@ export const searchSlice = createSlice({
 export const {
   setActiveSort,
   setActiveCategory,
-  setSearchParams,
   setSearchText,
   removeSearchText,
 } = searchSlice.actions
