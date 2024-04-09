@@ -1,7 +1,7 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
-type List = {
+type PizzaList = {
   imageUrl: string
   title: string
   types: number[]
@@ -12,9 +12,15 @@ type List = {
   id: any
 }
 
+enum FetchStatus {
+  Loading = 'loading',
+  Success = 'succeeded',
+  Failed = 'failed'
+}
+
 type PizzaState = {
-  pizzaList: List[]
-  status: string
+  pizzaList: PizzaList[]
+  status: FetchStatus
   errorMessage: string
 }
 
@@ -32,7 +38,7 @@ type FetchPizzaProps = {
 
 const initialState: PizzaState = {
   pizzaList: [],
-  status: "loading",
+  status: FetchStatus.Loading,
   errorMessage: "",
 }
 
@@ -50,7 +56,8 @@ export const fetchPizza = createAsyncThunk(
           : ""
       }${activeCategory > 0 ? "&category=" + activeCategory : ""}`
     )
-    return data
+
+    return data as PizzaList[]
   }
 )
 
@@ -58,20 +65,20 @@ export const pizzaSlice = createSlice({
   name: "pizza",
   initialState,
   reducers: {
-    setItems(state, action: PayloadAction<List[]>) {
+    setItems(state, action: PayloadAction<PizzaList[]>) {
       state.pizzaList = action.payload
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPizza.pending, (state) => {
-      state.status = "loading"
+      state.status = FetchStatus.Loading
     })
     builder.addCase(fetchPizza.fulfilled, (state, action) => {
       state.pizzaList = action.payload
-      state.status = "succeeded"
+      state.status = FetchStatus.Success
     })
     builder.addCase(fetchPizza.rejected, (state, action) => {
-      state.status = "failed"
+      state.status = FetchStatus.Failed
       state.errorMessage = action.error.code + ": " + action.error.message
     })
   },

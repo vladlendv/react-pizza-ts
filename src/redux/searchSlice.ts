@@ -7,7 +7,7 @@ type SearchParams = {
   desc?: string
 }
 
-type SearchCategories = {
+export type SearchCategories = {
   name: string
   id: number
 }

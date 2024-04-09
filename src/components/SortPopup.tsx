@@ -1,15 +1,17 @@
 import { setActiveSort } from "../redux/searchSlice"
 import { Sort } from "../redux/pizzaSlice"
 import { useAppDispatch, useAppSelector } from "../hooks/hooks"
+import { memo } from "react"
 
 type Props = {
   visible: boolean
   setVisible: (arg: false) => void
 }
 
-const SortPopup: React.FC<Props> = ({ visible, setVisible }) => {
+const SortPopup: React.FC<Props> = memo(({ visible, setVisible }) => {
   const dispatch = useAppDispatch()
-  const { activeSort, sortParams } = useAppSelector((state) => state.search)
+  const activeSort = useAppSelector((state) => state.search.activeSort)
+  const sortParams = useAppSelector((state) => state.search.sortParams)
 
   function changeActive(sortType: Sort) {
     dispatch(setActiveSort(sortType))
@@ -37,5 +39,5 @@ const SortPopup: React.FC<Props> = ({ visible, setVisible }) => {
       </ul>
     </div>
   )
-}
+})
 export default SortPopup

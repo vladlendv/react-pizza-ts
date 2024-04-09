@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react"
+import { memo, useEffect, useRef, useState } from "react"
 import SortPopup from "./SortPopup"
 import arrowTop from "../assets/img/arrow-top.svg"
 import arrowDown from "../assets/img/drop-down-arrow.svg"
 import { useAppSelector } from "../hooks/hooks"
 
-const Sort: React.FC = () => {
+const Sort: React.FC = memo(() => {
   const [visible, setVisible] = useState<boolean>(false)
   const activeSort = useAppSelector((state) => state.search.activeSort)
   const sortRef = useRef<HTMLDivElement>(null)
@@ -29,5 +29,5 @@ const Sort: React.FC = () => {
       <SortPopup visible={visible} setVisible={setVisible} />
     </div>
   )
-}
+})
 export default Sort

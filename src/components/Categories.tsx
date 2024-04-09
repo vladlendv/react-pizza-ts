@@ -1,8 +1,10 @@
 import { setActiveCategory } from "../redux/searchSlice"
 import { useAppDispatch, useAppSelector } from "../hooks/hooks"
+import { memo } from "react"
 
-const Categories: React.FC = () => {
-  const { categories, activeCategory } = useAppSelector((state) => state.search)
+const Categories: React.FC = memo(() => {
+  const categories = useAppSelector((state) => state.search.categories)
+  const activeCategory = useAppSelector((state) => state.search.activeCategory)
   const dispatch = useAppDispatch()
 
   return (
@@ -20,5 +22,5 @@ const Categories: React.FC = () => {
       </ul>
     </div>
   )
-}
+})
 export default Categories
