@@ -4,12 +4,26 @@ import backBtn from "../assets/img/back-btn.svg"
 import CartItem from "../components/CartItem/CartItem"
 import СlearCart from "../components/СlearCart"
 import EmptyCart from "../components/EmptyCart/EmptyCart"
-import { useAppSelector } from "../hooks/hooks"
+import { useAppDispatch, useAppSelector } from "../hooks/hooks"
+import { useEffect } from "react"
+import { setDataFromLocalStorage } from "../redux/cartSlice"
 
 const CartPage: React.FC = () => {
+  const dispatch = useAppDispatch()
   const { totalPrice, totalPizzaCount, orderList } = useAppSelector(
     (state) => state.cart
   )
+
+  useEffect(() => {
+    const storageItem: string | null = localStorage.getItem('cart-items')
+    if (storageItem) {
+      dispatch(setDataFromLocalStorage(JSON.parse(storageItem)))
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('cart-items', JSON.stringify({count: totalPizzaCount, price: totalPrice, list: orderList}))
+  }, [totalPizzaCount, totalPrice, orderList])
 
   return (
     <div className="container--cart">
@@ -24,7 +38,7 @@ const CartPage: React.FC = () => {
           </div>
           <div style={{ paddingTop: "15px" }} className="cart__items">
             {orderList.length > 0
-              ? orderList.map((item) => <CartItem key={item.id} item={item} />)
+              ? orderList.map((item: any) => <CartItem key={item.id} item={item} />)
               : null}
           </div>
           <div className="cart__bottom">

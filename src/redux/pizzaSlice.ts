@@ -56,7 +56,7 @@ export const fetchPizza = createAsyncThunk(
           : ""
       }${activeCategory > 0 ? "&category=" + activeCategory : ""}`
     )
-
+    
     return data as PizzaList[]
   }
 )

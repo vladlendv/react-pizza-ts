@@ -12,7 +12,7 @@ export type Item = {
   currentPizzaCount?: any
 }
 
-type CartState = {
+export type CartState = {
   totalPrice: number
   totalPizzaCount: number
   orderList: Item[]
@@ -47,6 +47,11 @@ export const cartSlice = createSlice({
         (acc, item) => acc + (item.price * item.currentPizzaCount || 0),
         0
       )
+    },
+    setDataFromLocalStorage(state, action) {
+      state.orderList = action.payload.list
+      state.totalPizzaCount = action.payload.count
+      state.totalPrice = action.payload.price
     },
     removeItem(state, action: PayloadAction<Item>) {
       state.orderList.forEach((item) => {
@@ -89,6 +94,6 @@ export const cartSlice = createSlice({
   },
 })
 
-export const { addItem, removeItem, clearItems, removeByType } =
+export const { addItem, removeItem, clearItems, removeByType, setDataFromLocalStorage } =
   cartSlice.actions
 export default cartSlice.reducer

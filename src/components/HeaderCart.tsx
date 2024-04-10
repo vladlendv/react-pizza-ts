@@ -1,10 +1,23 @@
-import { memo } from "react"
+import { memo, useEffect } from "react"
 import cartImg from "../assets/img/cart.svg"
 import { Link } from "react-router-dom"
-import { useAppSelector } from "../hooks/hooks"
+import { useAppDispatch, useAppSelector } from "../hooks/hooks"
+import { setDataFromLocalStorage } from "../redux/cartSlice"
 
 const HeaderCart: React.FC = memo(() => {
-  const { totalPizzaCount, totalPrice } = useAppSelector((state) => state.cart)
+  const { totalPizzaCount, totalPrice, orderList } = useAppSelector((state) => state.cart)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    const storageItem: string | null = localStorage.getItem('cart-items')
+    if (storageItem) {
+      dispatch(setDataFromLocalStorage(JSON.parse(storageItem)))
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('cart-items', JSON.stringify({count: totalPizzaCount, price: totalPrice, list: orderList}))
+  }, [totalPizzaCount, totalPrice, orderList])
 
   return (
     <div className="header__cart">
