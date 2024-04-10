@@ -3,8 +3,9 @@ import "react-loading-skeleton/dist/skeleton.css"
 import HomePage from "./pages/HomePage"
 import Wrapper from "./components/Wrapper"
 import { Route, Routes } from "react-router-dom"
-import ErrorPageBlock from "./components/ErrorPageBlock/ErrorPageBlock"
-import CartPage from "./pages/CartPage"
+import { Suspense, lazy } from "react"
+const CartPage = lazy(() => import("./pages/CartPage"))
+const ErrorPage = lazy(() => import("./pages/ErrorPage"))
 
 const App = () => {
   return (
@@ -12,8 +13,22 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="cart" element={<CartPage />} />
-        <Route path="*" element={<ErrorPageBlock />} />
+        <Route
+          path="cart"
+          element={
+            <Suspense fallback={<div>Загрузка корзины...</div>}>
+              <CartPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <ErrorPage />
+            </Suspense>
+          }
+        />
       </Routes>
     </Wrapper>
   )
