@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/react-pizza-ts/static/css/main.90fc5238.css",
+    "main.js": "/react-pizza-ts/static/js/main.a4bf723b.js",
+    "static/css/930.82c4657c.chunk.css": "/react-pizza-ts/static/css/930.82c4657c.chunk.css",
+    "static/js/930.d4e6030d.chunk.js": "/react-pizza-ts/static/js/930.d4e6030d.chunk.js",
+    "static/media/empty-cart.png": "/react-pizza-ts/static/media/empty-cart.52161fe591dc9861f83e.png",
+    "static/media/ProximaNova-Regular.eot": "/react-pizza-ts/static/media/ProximaNova-Regular.d97f8f32c098b28c3ab0.eot",
+    "static/media/ProximaNova-Regular.ttf": "/react-pizza-ts/static/media/ProximaNova-Regular.b078618b41b9b6629ea0.ttf",
+    "static/media/ProximaNova-Bold.eot": "/react-pizza-ts/static/media/ProximaNova-Bold.787088b281e017f8c449.eot",
+    "static/media/ProximaNova-Extrabld.eot": "/react-pizza-ts/static/media/ProximaNova-Extrabld.b9fcd9fbe4d0b5e73cbd.eot",
+    "static/media/ProximaNova-Bold.ttf": "/react-pizza-ts/static/media/ProximaNova-Bold.7722451a8c88b6100185.ttf",
+    "static/media/ProximaNova-Extrabld.ttf": "/react-pizza-ts/static/media/ProximaNova-Extrabld.026a945d32b05c6c8710.ttf",
+    "static/media/ProximaNova-Black.eot": "/react-pizza-ts/static/media/ProximaNova-Black.9a114cea74aac9cc06cc.eot",
+    "static/media/ProximaNova-Black.ttf": "/react-pizza-ts/static/media/ProximaNova-Black.5335144c30bdc79a2d6d.ttf",
+    "static/media/ProximaNova-Regular.woff": "/react-pizza-ts/static/media/ProximaNova-Regular.99528640efded3e12591.woff",
+    "static/media/ProximaNova-Bold.woff": "/react-pizza-ts/static/media/ProximaNova-Bold.1f267da183b3d4fe3d5b.woff",
+    "static/media/ProximaNova-Extrabld.woff": "/react-pizza-ts/static/media/ProximaNova-Extrabld.64f095e95e4018946cb1.woff",
+    "static/media/ProximaNova-Black.woff": "/react-pizza-ts/static/media/ProximaNova-Black.131eab64b8a971a4fc73.woff",
+    "static/media/pizza-svgrepo-com.svg": "/react-pizza-ts/static/media/pizza-svgrepo-com.4c4b4702126e19777818f4fbd33527e0.svg",
+    "static/media/clear-btn.svg": "/react-pizza-ts/static/media/clear-btn.f82939cd9e5ed4cec052a1eb6750ed17.svg",
+    "static/media/cart.svg": "/react-pizza-ts/static/media/cart.e0b31d96c7e060f80eae20d1c1429ade.svg",
+    "static/media/drop-down-arrow.svg": "/react-pizza-ts/static/media/drop-down-arrow.ebafe17102b2168abfb6a3518c22b2f8.svg",
+    "static/media/remove.svg": "/react-pizza-ts/static/media/remove.c67aedc793e038acc34d36daa51c02cc.svg",
+    "static/media/plus.svg": "/react-pizza-ts/static/media/plus.6c6336e128f46dbdeaaa20e5d8784813.svg",
+    "static/media/content-title.svg": "/react-pizza-ts/static/media/content-title.97edb0c697115596730515f148566195.svg",
+    "index.html": "/react-pizza-ts/index.html",
+    "static/media/arrow-top.svg": "/react-pizza-ts/static/media/arrow-top.cfefae005065706046b38f5ba15f33a9.svg",
+    "static/media/minus.svg": "/react-pizza-ts/static/media/minus.1b4c422970fa842e22da2f4e1b84775c.svg",
+    "static/media/back-btn.svg": "/react-pizza-ts/static/media/back-btn.8b94943646e21c2c7295ff559cee3040.svg",
+    "main.90fc5238.css.map": "/react-pizza-ts/static/css/main.90fc5238.css.map",
+    "main.a4bf723b.js.map": "/react-pizza-ts/static/js/main.a4bf723b.js.map",
+    "930.82c4657c.chunk.css.map": "/react-pizza-ts/static/css/930.82c4657c.chunk.css.map",
+    "930.d4e6030d.chunk.js.map": "/react-pizza-ts/static/js/930.d4e6030d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.90fc5238.css",
+    "static/js/main.a4bf723b.js"
+  ]
+}
