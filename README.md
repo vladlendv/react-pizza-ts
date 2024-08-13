@@ -1,5 +1,5 @@
 # Github pages
-https://vladlendv.github.io/react-pizza-ts/
+https://vladlendv.github.io
 
 # Getting Started with Create React App
 
