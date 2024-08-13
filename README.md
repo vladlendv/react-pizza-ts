@@ -1,3 +1,6 @@
+# Github pages
+https://vladlendv.github.io/react-pizza-ts/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
